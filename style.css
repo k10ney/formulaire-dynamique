@@ -1,0 +1,103 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+button[type="button"]{
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); 
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+    transition: all 0.3s ease;
+    
+}
+.formulaire{
+    display: block;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  
+}
+
+.FORMU {
+    display: none;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 50px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    font-family: 'Arial', sans-serif;
+    transition: all 1s ease;
+}
+
+.FORMU input {
+    width: 90%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 2px solid #ff7e5f; 
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.FORMU input:focus {
+    border-color: #feb47b; 
+    box-shadow: 0 0 5px rgba(255, 126, 95, 0.5);
+}
+
+.FORMU button {
+    width: 100%;
+    padding: 12px 0;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+
+.FORMU button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.FORMU button:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.FORMU div[class^="p"] p {
+    color: red;
+    font-size: 0.9rem;
+    margin: 5px 0 0 10px;
+}
+.contener{
+    background-color:  #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    padding: 12px 0;
+    border-radius: 10px;
+    display: none;
+    
+}
+.contener.active {
+    display: block;
+    transition: all 0.5s ease;
+}
+
+.infor{
+       text-align: center;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+

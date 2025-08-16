@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formulaire_dynamique</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+    <div class="formulaire">
+        <h1>FORMULAIRE</h1>
+        <button type="button" class="butval" onclick="butinscript()">INSCRIPTION</button>
+    </div>
+    <div class="FORMU"></div>
+    <div class="contener"></div>
+    <span class="infor"></span>
+
+
+
+    <script>
+        function butinscript() {
+            console.log('fonction active');
+
+            let oldForm = document.querySelector('form');
+                        
+            let conteneu=document.querySelector('.FORMU')
+             conteneu.style.display='none'
+             conteneu.style.transition='0.3s ease'
+
+            if (oldForm) {
+                oldForm.remove();
+    
+                return;
+            } else{  
+
+         
+            let form = document.createElement('form');
+            form.innerHTML = `
+                <input type='text' placeholder='Nom'>
+                <div class="p1"></div>
+                <input type='email' placeholder='Gmail'>
+                <div class="p2"></div>
+                <input type='password' placeholder='Password'>
+                <div class="p3"></div>
+                <button type='submit'>Envoyer</button>
+            `;
+
+             let conteneur=document.querySelector('.FORMU')
+             conteneur.appendChild(form);
+             conteneur.style.opacity='0'
+             conteneur.style.display='block'
+             conteneur.style.transform='translateY(-50px) '
+
+             setTimeout(()=>{
+            conteneur.style.transition = 'all 3s ease'
+            conteneur.style.opacity='1'
+             conteneur.style.display='block'
+             conteneur.style.transform='translateY(0px) '
+        
+             } ,10)
+            
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                verifie();
+            });
+        }
+
+        function verifie() {
+            let namval = document.querySelector("input[placeholder='Nom']").value.trim();
+            let Gmailval = document.querySelector("input[placeholder='Gmail']").value.trim();
+            let passwordval = document.querySelector("input[placeholder='Password']").value.trim();
+
+            
+            document.querySelector('.p1').innerHTML = "";
+            document.querySelector('.p2').innerHTML = "";
+            document.querySelector('.p3').innerHTML = "";
+
+            if (namval === "") {
+                let para1 = document.createElement('p');
+                para1.textContent = "Le nom est requis";
+                document.querySelector('.p1').appendChild(para1);
+            } else if (!isNaN(namval)) {
+                document.querySelector("input[placeholder='Nom']").style.border = "3px solid red";
+            } else {
+                document.querySelector("input[placeholder='Nom']").style.border = "3px solid green";
+            }
+
+            if (Gmailval === "") {
+                let para2 = document.createElement('p');
+                para2.textContent = "Le Gmail est requis";
+                document.querySelector('.p2').appendChild(para2);
+            } else {
+                document.querySelector("input[placeholder='Gmail']").style.border = "3px solid green";
+            }
+
+            
+            if (passwordval === "") {
+                let para3 = document.createElement('p');
+                para3.textContent = "Le mot de passe est requis";
+                document.querySelector('.p3').appendChild(para3);
+            } else if (passwordval.length < 8 || !/[a-zA-Z]/.test(passwordval) || !/[0-9]/.test(passwordval)) {
+                document.querySelector("input[placeholder='Password']").style.border = "3px solid red";
+            } else {
+                document.querySelector("input[placeholder='Password']").style.border = "3px solid green";
+            }
+            let information=document.querySelector('.infor')
+            information.innerHTML=`<h1> Vos informations</h1>
+                                    <p> Nom:${namval}</p>
+                                    <p> Gmail:${Gmailval}</p>
+                                    <p> Password:${passwordval}</p>`
+            information.style.textAligne="center"
+            let contener=document.querySelector('.contener')
+            contener.appendChild(information)
+            contener.classList.add('active');
+    
+        }
+    }
+   
+    </script>
+</body>
+</html>
